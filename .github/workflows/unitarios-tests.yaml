@@ -29,7 +29,7 @@ jobs:
         run: yarn
         
       - name: Executando Testes Unitários
-        run: yarn mocha ./testes/trabalho_final.js
+        run: yarn test
   
       - name: Upload do Relatório Mocha
         uses: actions/upload-artifact@v4
