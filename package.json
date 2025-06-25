@@ -4,7 +4,7 @@
     "description": "",
     "main": "trabalho_final.js",
     "scripts": {
-        "test": "mocha --reporter mochawesome ./testes/trabalho_final.js"
+        "test": "mocha ./testes/trabalho_final_teste.js --reporter mochawesome "
     },
     "repository": {
         "type": "git",
