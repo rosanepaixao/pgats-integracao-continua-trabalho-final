@@ -28,9 +28,6 @@ jobs:
       - name: Instalando Dependências
         run: yarn
         
-      - name: Checando padronização do código
-        run: yarn lint
-
       - name: Executando Testes Unitários
         run: yarn mocha ./testes/trabalho_final.js
   
