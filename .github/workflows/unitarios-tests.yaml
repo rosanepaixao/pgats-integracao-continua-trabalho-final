@@ -1,0 +1,42 @@
+# CI de Nível 04 - Disparo dos testes dentro do pipe de dev
+
+# nome do nosso 'pipeline'
+name: 'Testes Unitários'
+
+on:
+  workflow_dispatch:
+
+jobs:
+  unitarios_tests:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Fazendo checkout do projeto 
+        uses: actions/checkout@v4
+
+      # instalação do node
+      - name: Instalando Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      #instalação do yarn
+      - name: Instalando Yarn
+        run: npm install -g yarn
+
+      # instalação das dependências
+      - name: Instalando Dependências
+        run: yarn
+        
+      - name: Checando padronização do código
+        run: yarn lint
+
+      - name: Executando Testes Unitários
+        run: yarn mocha ./testes/trabalho_final.js
+  
+      - name: Upload do Relatório Mocha
+        uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: relatorio-mocha
+          path: ./mochawesome-report
